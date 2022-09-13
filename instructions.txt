@@ -1,0 +1,2 @@
+# execute pm2 start ecosystem.config.js
+# configuration archive of pm2 executer
