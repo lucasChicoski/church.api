@@ -8,6 +8,19 @@ export class MySqlClientRepository implements IClientReposiotry {
     constructor() {
         this.prisma = new PrismaClient()
     }
+    async findClientById(id: string): Promise<Client> {
+        try {
+            let client = await this.prisma.user.findUnique({
+                where: {
+                    id: id
+                }
+            })
+            return client
+        } catch (error) {
+            return error
+        }
+    }
+
 
     async findClientByEmail(email: string): Promise<Client> {
 
@@ -35,7 +48,16 @@ export class MySqlClientRepository implements IClientReposiotry {
 
     }
     async deleteClient(id: string): Promise<void> {
-        throw new Error("Method not implemented.");
+        try {
+            await this.prisma.user.delete({
+                where: {
+                    id: id
+                }
+            })
+        } catch (error) {
+            console.log("aaaa", error)
+            return error.code
+        }
     }
     async updateClient(client: Client): Promise<void> {
         throw new Error("Method not implemented.");
