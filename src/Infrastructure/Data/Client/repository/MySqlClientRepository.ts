@@ -21,12 +21,10 @@ export class MySqlClientRepository implements IClientReposiotry {
         } catch (error) {
             throw new Error(error)
         }
-
-
     }
-    async saveClient(client: Client): Promise<void> {
+    async saveClient(client: Client): Promise<Client> {
         try {
-           await this.prisma.user.create({
+            return await this.prisma.user.create({
                 data: {
                     ...client
                 }

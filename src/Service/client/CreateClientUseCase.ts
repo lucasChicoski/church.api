@@ -11,13 +11,21 @@ export class CreateClientUseCase {
 
     async execute(data: ICreateClientRequestDTO) {
         const alreadyRegisterClient = await this.clientRepository.findClientByEmail(data.email)
-        
+
         if (alreadyRegisterClient) {
-            throw new Error("User already registered")
+            return {
+                status_code: 400,
+                message: "Client Already Register"
+            }
         }
 
         const client = new Client(data)
-        this.clientRepository.saveClient(client)
+        let clientRegisterd = await this.clientRepository.saveClient(client)
+
+        return {
+            status_code: 200,
+            response: clientRegisterd
+        }
     }
 
 }

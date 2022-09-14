@@ -2,8 +2,8 @@ import { CreateClientUseCase } from "../../Service/client/CreateClientUseCase";
 
 
 export class CreateClientController {
-    createClientUseCase:CreateClientUseCase
-    constructor() { 
+    createClientUseCase: CreateClientUseCase
+    constructor() {
         this.createClientUseCase = new CreateClientUseCase()
     }
 
@@ -11,13 +11,13 @@ export class CreateClientController {
         const { name, lastName, email, phone, password, id_igreja } = req.body
 
         try {
-            this.createClientUseCase.execute({
+            var response = await this.createClientUseCase.execute({
                 name, lastName, email, phone, password, id_igreja,
             })
-            res.send("corpo de requisição capturada")
+
+            res.send(response)
         } catch (error) {
-            console.log("testes", error)
-            // await 
+            throw new Error(error)
         }
     }
 
