@@ -1,6 +1,7 @@
 
 
 export interface ICreateClientRequestDTO {
+    id?: string;
     name: string;
     lastName: string;
     email: string;

@@ -55,11 +55,22 @@ export class MySqlClientRepository implements IClientReposiotry {
                 }
             })
         } catch (error) {
-            console.log("aaaa", error)
             return error.code
         }
     }
-    async updateClient(client: Client): Promise<void> {
-        throw new Error("Method not implemented.");
+    async updateClient(client: Client): Promise<Client> {
+        try {
+            const response = await this.prisma.user.update({
+                where: {
+                    id: client.id
+                },
+                data: {
+                    ...client
+                },
+            })
+            return response
+        } catch (error) {
+            return error
+        }
     }
 }
