@@ -8,6 +8,15 @@ export class MySqlClientRepository implements IClientReposiotry {
     constructor() {
         this.prisma = new PrismaClient()
     }
+
+    async getAllClients(id_church: string): Promise<Client[]> {
+        let listClients = await this.prisma.user.findMany({
+            where: {
+                id_church: id_church
+            }
+        })
+        return listClients
+    }
     async findClientById(id: string): Promise<Client> {
         try {
             let client = await this.prisma.user.findUnique({

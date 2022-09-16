@@ -10,11 +10,11 @@ export class UpdateClientController {
 
 
     async handle(req, res) {
-        const { id, name, lastName, email, phone, password, id_igreja, } = req.body
+        const { id, name, lastName, email, phone, password, id_church, } = req.body
 
 
         try {
-            let response = await this.updateClientUseCase.execute({ id, name, lastName, email, phone, password, id_igreja })
+            let response = await this.updateClientUseCase.execute({ id, name, lastName, email, phone, password, id_church })
 
             res.send(response)
         } catch (error) {

@@ -10,7 +10,7 @@ export class Client {
     email: string;
     phone: string;
     password: string;
-    id_igreja: string;
+    id_church: string;
 
 
     constructor(data: ICreateClientRequestDTO, id?: string) {
@@ -20,7 +20,7 @@ export class Client {
         this.email = data.email
         this.phone = data.phone
         this.password = data.password
-        this.id_igreja = data.id_igreja
+        this.id_church = data.id_church
 
         if (!id) {
             this.id = uuidv4()

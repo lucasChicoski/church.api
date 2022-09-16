@@ -7,4 +7,5 @@ export interface IClientReposiotry {
     saveClient(client: Client): Promise<Client>
     deleteClient(id: string): Promise<void>
     updateClient(client: Client): Promise<Client>
+    getAllClients(id_church: string): Promise<Client[]>
 }
