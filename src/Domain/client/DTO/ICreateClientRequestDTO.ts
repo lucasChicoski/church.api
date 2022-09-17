@@ -7,5 +7,6 @@ export interface ICreateClientRequestDTO {
     email: string;
     phone: string;
     password: string;
+    photo?: string
     id_church: string;
 }

@@ -10,6 +10,7 @@ export class Client {
     email: string;
     phone: string;
     password: string;
+    photo?: string
     id_church: string;
 
 
@@ -21,6 +22,10 @@ export class Client {
         this.phone = data.phone
         this.password = data.password
         this.id_church = data.id_church
+        this.photo = data.photo
+        // if (!data.photo) {
+        //     this.photo = ''
+        // }
 
         if (!id) {
             this.id = uuidv4()
