@@ -1,6 +1,6 @@
-import { ICreateClientRequestDTO } from "../../Domain/client/DTO/ICreateClientRequestDTO";
-import { Client } from "../../Domain/client/Models/ClientModel";
-import { MySqlClientRepository } from "../../Infrastructure/Data/Client/repository/MySqlClientRepository";
+import { ICreateClientRequestDTO } from "../../Domain/DTO/ICreateClientRequestDTO";
+import { Client } from "../../Domain/Models/ClientModel";
+import { MySqlClientRepository } from "../../Infrastructure/Data/client_repository/MySqlClientRepository";
 
 
 export class CreateClientUseCase {

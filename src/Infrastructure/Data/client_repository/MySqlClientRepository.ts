@@ -1,4 +1,4 @@
-import { Client } from "../../../../Domain/client/Models/ClientModel";
+import { Client } from "../../../Domain/Models/ClientModel";
 import { IClientReposiotry } from "./IClientRepository";
 import { PrismaClient } from "@prisma/client"
 

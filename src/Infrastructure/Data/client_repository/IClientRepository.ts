@@ -1,4 +1,4 @@
-import { Client } from "../../../../Domain/client/Models/ClientModel"
+import { Client } from "../../../Domain/Models/ClientModel"
 
 
 export interface IClientReposiotry {

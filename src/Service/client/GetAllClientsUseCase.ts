@@ -1,4 +1,4 @@
-import { MySqlClientRepository } from "../../Infrastructure/Data/Client/repository/MySqlClientRepository";
+import { MySqlClientRepository } from "../../Infrastructure/Data/client_repository/MySqlClientRepository";
 
 
 export default class GetAllClientsUseCase {
@@ -13,7 +13,7 @@ export default class GetAllClientsUseCase {
         try {
 
             const response = await this.clientRepository.getAllClients(id)
-            console.log(response)
+
             if (response.length > 0) {
                 return {
                     status_code: 200,

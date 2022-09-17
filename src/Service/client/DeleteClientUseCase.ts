@@ -1,4 +1,4 @@
-import { MySqlClientRepository } from "../../Infrastructure/Data/Client/repository/MySqlClientRepository";
+import { MySqlClientRepository } from "../../Infrastructure/Data/client_repository/MySqlClientRepository";
 
 
 
@@ -13,7 +13,7 @@ export default class DeleteClientUseCase {
         try {
 
             let response = await this.clientRepository.findClientById(id)
-            console.log("terere", response)
+
 
             if (response) {
                 await this.clientRepository.deleteClient(id)
