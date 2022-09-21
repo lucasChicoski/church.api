@@ -7,6 +7,7 @@ export class CreateClientUseCase {
     clientRepository: MySqlClientRepository
     constructor() {
         this.clientRepository = new MySqlClientRepository()
+
     }
 
     async execute(data: ICreateClientRequestDTO) {
@@ -24,7 +25,8 @@ export class CreateClientUseCase {
 
         return {
             status_code: 200,
-            response: clientRegisterd
+            message: clientRegisterd,
+
         }
     }
 
