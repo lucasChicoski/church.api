@@ -1,12 +1,13 @@
-import { ICreateClientRequestDTO } from "../../Domain/client/DTO/ICreateClientRequestDTO";
-import { Client } from "../../Domain/client/Models/ClientModel";
-import { MySqlClientRepository } from "../../Infrastructure/Data/Client/repository/MySqlClientRepository";
+import { ICreateClientRequestDTO } from "../../Domain/DTO/ICreateClientRequestDTO";
+import { Client } from "../../Domain/Models/ClientModel";
+import { MySqlClientRepository } from "../../Infrastructure/Data/client_repository/MySqlClientRepository";
 
 
 export class CreateClientUseCase {
     clientRepository: MySqlClientRepository
     constructor() {
         this.clientRepository = new MySqlClientRepository()
+
     }
 
     async execute(data: ICreateClientRequestDTO) {
@@ -24,7 +25,8 @@ export class CreateClientUseCase {
 
         return {
             status_code: 200,
-            response: clientRegisterd
+            message: clientRegisterd,
+
         }
     }
 

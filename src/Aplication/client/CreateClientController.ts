@@ -8,11 +8,11 @@ export class CreateClientController {
     }
 
     async hendle(req, res) {
-        const { name, lastName, email, phone, password, id_igreja } = req.body
+        const { name, lastName, email, phone, password, id_church } = req.body
 
         try {
             var response = await this.createClientUseCase.execute({
-                name, lastName, email, phone, password, id_igreja,
+                name, lastName, email, phone, password, id_church,
             })
 
             res.send(response)
@@ -20,5 +20,4 @@ export class CreateClientController {
             throw new Error(error)
         }
     }
-
 }

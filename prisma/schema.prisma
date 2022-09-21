@@ -17,6 +17,7 @@ model User {
   email     String   @unique
   phone     String
   password  String
-  id_igreja String
+  id_church String
+  photo     String?
   createdAt DateTime @default(now())
 }
