@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `church` MODIFY `code` INTEGER NOT NULL AUTO_INCREMENT;
