@@ -13,39 +13,62 @@ export class MySqlChurchRepository implements IChurchRepository {
     constructor() {
         this.prisma = new PrismaClient()
     }
-    async saveChurch(church: Church): Promise<Church> {
-        console.log("vrau", church)
+    async findAllChurch(): Promise<Church[]> {
+        const responseBd = await this.prisma.church.findMany({
+            include: {
+                ContactChurch: true
+            }
+        })
+        return responseBd
+    }
 
-        const churchCreated = await this.prisma.church.create({
+    async saveChurch(church: Church): Promise<Church> {
+        const responseBd = await this.prisma.church.create({
             data: {
                 ...church
             }
         })
-        console.log("igreja cadastrada", churchCreated)
-        return churchCreated
-        //  throw new Error("Method not implemented.");
+        return responseBd
     }
     updateChurch(church: Church): Promise<Church> {
         throw new Error("Method not implemented.");
     }
-    findByCodeChurch(code: Number): Promise<Church> {
-        throw new Error("Method not implemented.");
+    async findByCodeChurch(code: number): Promise<Church> {
+        const responseBd = await this.prisma.church.findUnique({
+            where: {
+                code: code
+            }, include: {
+                ContactChurch: true
+            }
+        })
+        return responseBd
     }
     async findByCNPJChurch(cnpj: string): Promise<Church> {
 
-        const churchResearch = await this.prisma.church.findUnique({
+        const responseBd = await this.prisma.church.findUnique({
             where: {
                 cnpj: cnpj
+            }, include: {
+                ContactChurch: true
             }
         })
-        console.log(cnpj)
-        return churchResearch
-        // throw new Error("Method not implemented.");
+        return responseBd
     }
-    deleteChurch(code: Number): Promise<void> {
-        throw new Error("Method not implemented.");
+    async deleteChurch(code: number): Promise<void> {
+        //continuar desenvolvendo
+        try {
+            await this.prisma.church.delete({
+                where: {
+                    code: code
+                },
+                include: {
+                    AddressChruch: true
+                }
+            })
+        } catch (error) {
+            return error.message
+        }
+
     }
-    getAllChurch(): Promise<Church[]> {
-        throw new Error("Method not implemented.");
-    }
+
 }
