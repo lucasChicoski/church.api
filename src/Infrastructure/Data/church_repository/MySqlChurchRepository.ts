@@ -62,7 +62,7 @@ export class MySqlChurchRepository implements IChurchRepository {
                     code: code
                 },
                 include: {
-                    AddressChruch: true
+                    ContactChurch:true
                 }
             })
         } catch (error) {

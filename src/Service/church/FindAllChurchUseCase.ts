@@ -12,7 +12,7 @@ export class FindAllChurchUseCase {
     async handle() {
         const response = await this.churchRepository.findAllChurch()
 
-        if (response) {
+        if (response.length > 0) {
             return {
                 status_code: 400,
                 data: response
