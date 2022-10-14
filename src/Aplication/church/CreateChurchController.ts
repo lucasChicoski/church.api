@@ -11,12 +11,10 @@ export class CreateChurchController {
 
     async handle(req, res) {
 
-        const { churchName, cnpj, religion, contact } = req.body
-
-        console.log("contato", contact)
+        const { churchName, cnpj, religion, contact, } = req.body
 
         try {
-            const response = await this.createChurchUseCase.execute({ churchName, cnpj, religion },/**Contato, Endereço */)
+            const response = await this.createChurchUseCase.execute({ churchName, cnpj, religion }, { phoneNumber: contact.phone, email: contact.email})
             res.send(response)
 
         } catch (error) {

@@ -29,7 +29,7 @@ export default class DeleteClientUseCase {
             }
 
         } catch (error) {
-            console.log(error)
+            return error
         }
     }
 

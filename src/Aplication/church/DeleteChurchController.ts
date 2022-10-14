@@ -11,7 +11,6 @@ export class DeleteChurchController {
     async handle(req, res) {
 
         const { code } = req.body
-        console.log("my code", code)
         try {
             const response = await this.deleteChurchUseCase.execute(code)
             res.send(response)
