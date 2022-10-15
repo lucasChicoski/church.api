@@ -40,7 +40,7 @@ model Church {
 model ContactChurch {
   id          String   @id
   idChurch    String
-  church      Church   @relation(fields: [idChurch], references: [id])
+  church      Church?  @relation(fields: [idChurch], references: [id], onDelete: Cascade)
   phoneNumber String   @unique
   email       String   @unique
   createdAt   DateTime @default(now())
@@ -49,14 +49,15 @@ model ContactChurch {
 }
 
 model AddressChruch {
-  id           String @id
+  id           String   @id
   idChurch     String
   state        String
   city         String
   neighborhood String
   street       String
   cep          String
-  church       Church @relation(fields: [idChurch], references: [id])
+  church       Church   @relation(fields: [idChurch], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now())
 
   @@map("address_church")
 }
