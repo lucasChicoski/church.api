@@ -12,13 +12,9 @@ export class MySqlAddressRepository implements IAddressRepository {
     }
     async saveAddress(address: AddressModel): Promise<AddressModel> {
 
-        console.log("meu endereço",address)
-
         const response = await this.prisma.addressChruch.create({
             data: address
         })
-
-        console.log("salvou")
 
         return response
     }
