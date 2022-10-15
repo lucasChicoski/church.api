@@ -1,5 +1,6 @@
-import { ICreateAddress } from "../DTO/ICreateAddressRequestDTO";
+
 import { v4 as uuidv4 } from "uuid"
+import { ICreateAddressRequestDTO } from "../DTO/ICreateAddressRequestDTO"
 
 
 
@@ -13,7 +14,7 @@ export class AddressModel {
     street: string
     cep: string
 
-    constructor(data: ICreateAddress, idChurch: string, id?: string) {
+    constructor(data: ICreateAddressRequestDTO, idChurch: string, id?: string) {
 
         this.id = id
         this.state = data.state

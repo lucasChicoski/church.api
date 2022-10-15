@@ -16,7 +16,8 @@ export class MySqlChurchRepository implements IChurchRepository {
     async findAllChurch(): Promise<Church[]> {
         const responseBd = await this.prisma.church.findMany({
             include: {
-                ContactChurch: true
+                ContactChurch: true,
+                AddressChruch: true,
             }
         })
         return responseBd
@@ -38,7 +39,8 @@ export class MySqlChurchRepository implements IChurchRepository {
             where: {
                 code: code
             }, include: {
-                ContactChurch: true
+                ContactChurch: true,
+                AddressChruch: true,
             }
         })
         return responseBd
@@ -49,7 +51,8 @@ export class MySqlChurchRepository implements IChurchRepository {
             where: {
                 cnpj: cnpj
             }, include: {
-                ContactChurch: true
+                ContactChurch: true,
+                AddressChruch: true
             }
         })
         return responseBd
@@ -62,7 +65,8 @@ export class MySqlChurchRepository implements IChurchRepository {
                     code: code
                 },
                 include: {
-                    ContactChurch:true
+                    ContactChurch:true,
+                    AddressChruch: true
                 }
             })
         } catch (error) {

@@ -1,7 +1,7 @@
 
 
 
-export interface ICreateAddress {
+export interface ICreateAddressRequestDTO {
     state: string
     city: string
     neighborhood: string

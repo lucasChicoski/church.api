@@ -10,8 +10,17 @@ export class MySqlAddressRepository implements IAddressRepository {
     constructor() {
         this.prisma = new PrismaClient()
     }
-    saveAddress(address: AddressModel): Promise<AddressModel> {
-        throw new Error("Method not implemented.");
+    async saveAddress(address: AddressModel): Promise<AddressModel> {
+
+        console.log("meu endereço",address)
+
+        const response = await this.prisma.addressChruch.create({
+            data: address
+        })
+
+        console.log("salvou")
+
+        return response
     }
     updateAddress(address: AddressModel): Promise<AddressModel> {
         throw new Error("Method not implemented.");

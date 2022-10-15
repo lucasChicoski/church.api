@@ -56,7 +56,7 @@ model AddressChruch {
   neighborhood String
   street       String
   cep          String
-  church       Church   @relation(fields: [idChurch], references: [id])
+  church       Church   @relation(fields: [idChurch], references: [id], onDelete: Cascade)
   createdAt    DateTime @default(now())
 
   @@map("address_church")
