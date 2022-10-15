@@ -20,4 +20,44 @@ model User {
   id_church String
   photo     String?
   createdAt DateTime @default(now())
+
+  @@map("user") //nome da tabela
+}
+
+model Church {
+  id            String          @id
+  code          Int             @unique @default(autoincrement())
+  churchName    String
+  religion      String
+  cnpj          String          @unique
+  createdAt     DateTime        @default(now())
+  ContactChurch ContactChurch[]
+  AddressChruch AddressChruch[]
+
+  @@map("church")
+}
+
+model ContactChurch {
+  id          String   @id
+  idChurch    String
+  church      Church?  @relation(fields: [idChurch], references: [id], onDelete: Cascade)
+  phoneNumber String   @unique
+  email       String   @unique
+  createdAt   DateTime @default(now())
+
+  @@map("contact_church")
+}
+
+model AddressChruch {
+  id           String   @id
+  idChurch     String
+  state        String
+  city         String
+  neighborhood String
+  street       String
+  cep          String
+  church       Church   @relation(fields: [idChurch], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now())
+
+  @@map("address_church")
 }
